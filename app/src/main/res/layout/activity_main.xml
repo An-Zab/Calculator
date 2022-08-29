@@ -4,121 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#5CDB95"
+    android:background="@color/backgroundcolor"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button21"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="420dp"
-        android:background="@drawable/buttonexample"
-        android:text="0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button23"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="420dp"
-        android:background="@drawable/buttonexample"
-        android:text="="
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button24"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="420dp"
-        android:background="@drawable/buttonexample"
-        android:text=","
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button22"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="420dp"
-        android:background="@drawable/buttonexample"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button18"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="320dp"
-        android:background="@drawable/buttonexample"
-        android:text="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button17"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="320dp"
-        android:background="@drawable/buttonexample"
-        android:text="2"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button20"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="320dp"
-        android:background="@drawable/buttonexample"
-        android:text="+"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button19"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="320dp"
-        android:background="@drawable/buttonexample"
-        android:text="3"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button12"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="216dp"
-        android:background="@drawable/buttonexample"
-        android:text="—"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button11"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="216dp"
-        android:background="@drawable/buttonexample"
-        android:text="6"
-        app:layout_constraintStart_toEndOf="@+id/button4"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <TextView
-
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -144,110 +33,203 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:id="@+id/id0"
+        style="@style/ButtonExample"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="405dp"
         android:background="@drawable/buttonexample"
-        android:text="(  )"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        android:text="0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:id="@+id/equal"
+        style="@style/ButtonExample"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="405dp"
         android:background="@drawable/buttonexample"
+        android:text="="
+        app:layout_constraintStart_toEndOf="@+id/button22"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/comma"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="405dp"
+        android:background="@drawable/buttonexample"
+        android:text=","
+        app:layout_constraintStart_toEndOf="@+id/id0"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageButton
+        android:id="@+id/button22"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="405dp"
+        android:background="@drawable/buttonexample"
+        android:foreground="@drawable/backspaceimage"
+        app:layout_constraintStart_toEndOf="@+id/comma"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id1"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="306dp"
+        android:background="@drawable/buttonexample"
+        android:text="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id2"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="306dp"
+        android:background="@drawable/buttonexample"
+        android:text="2"
+        app:layout_constraintStart_toEndOf="@+id/id1"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/plus"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="306dp"
+        android:background="@drawable/buttonexample"
+        android:text="+"
+        app:layout_constraintStart_toEndOf="@+id/id3"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id3"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="306dp"
+        android:background="@drawable/buttonexample"
+        android:text="3"
+        android:textColor="#C5C6C7"
+        app:layout_constraintStart_toEndOf="@+id/id2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/minus"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="207dp"
+        android:background="@drawable/buttonexample"
+        android:text="—"
+        app:layout_constraintStart_toEndOf="@+id/id6"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id6"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="207dp"
+        android:background="@drawable/buttonexample"
+        android:text="6"
+        app:layout_constraintStart_toEndOf="@+id/id5"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/brackets"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/buttonexample"
+        android:text="(  )"
+        app:layout_constraintStart_toEndOf="@+id/id7"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/AC"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
+        android:background="@drawable/buttonexample"
+        android:backgroundTint="#C86F2232"
         android:text="AC"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:id="@+id/id7"
+        style="@style/ButtonExample"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="108dp"
         android:background="@drawable/buttonexample"
         android:text="7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button2"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/percents"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
         android:background="@drawable/buttonexample"
         android:text="%"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/brackets"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button5"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="216dp"
+        android:id="@+id/id5"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="207dp"
         android:background="@drawable/buttonexample"
         android:text="5"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/id4"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button6"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="220dp"
+        android:id="@+id/multiply"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="108dp"
         android:background="@drawable/buttonexample"
         android:text="×"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/id9"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button7"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="116dp"
+        android:id="@+id/id9"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="108dp"
         android:background="@drawable/buttonexample"
         android:text="9"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/id8"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button8"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/id8"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="108dp"
         android:background="@drawable/buttonexample"
         android:text="8"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/id7"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button9"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/divide"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="9dp"
         android:background="@drawable/buttonexample"
         android:text="÷"
-        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintStart_toEndOf="@+id/percents"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button10"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="216dp"
+        android:id="@+id/id4"
+        style="@style/ButtonExample"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="207dp"
         android:background="@drawable/buttonexample"
         android:text="4"
         app:layout_constraintStart_toStartOf="parent"

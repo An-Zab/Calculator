@@ -8,6 +8,11 @@
     <color name="TVcolorforbutton">#C5C6C7</color>
     <color name="namecolor">#45A29E</color>
     <color name="addcolorforbuttton">#66FCF1</color>
+    <color name="equalcolor1">#3659AE</color>
+    <color name="equalcolor1.1">#FF4254AE</color>
+    <color name="accolor1">#C86F2232</color>
+    <color name="accolor1.1">#FF6F2232</color>
+    <color name="TVbackgroundcolor">#272727</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

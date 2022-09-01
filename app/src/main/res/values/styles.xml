@@ -6,7 +6,6 @@
         <item name="android:textSize">40sp</item>
         <item name="android:textColor">@color/TVcolorforbutton</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:onClick">numberAction</item>
     </style>
 
     <style name="ButtonAddExample">

@@ -155,14 +155,14 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/brackets"
+        android:id="@+id/idbrackets"
         style="@style/ButtonAddExample"
         android:layout_marginStart="4dp"
         android:layout_marginTop="9dp"
         android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="(  )"
-        app:layout_constraintEnd_toStartOf="@+id/percents"
+        app:layout_constraintEnd_toStartOf="@+id/idpercents"
         app:layout_constraintStart_toEndOf="@+id/AC"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
@@ -174,7 +174,7 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/acbutton"
         android:text="AC"
-        app:layout_constraintEnd_toStartOf="@+id/brackets"
+        app:layout_constraintEnd_toStartOf="@+id/idbrackets"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
@@ -191,7 +191,7 @@
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/percents"
+        android:id="@+id/idpercents"
         style="@style/ButtonAddExample"
         android:layout_marginStart="4dp"
         android:layout_marginTop="9dp"
@@ -199,7 +199,7 @@
         android:background="@drawable/buttonexample"
         android:text="%"
         app:layout_constraintEnd_toStartOf="@+id/iddivide"
-        app:layout_constraintStart_toEndOf="@+id/brackets"
+        app:layout_constraintStart_toEndOf="@+id/idbrackets"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -259,7 +259,7 @@
         android:background="@drawable/buttonexample"
         android:text="/"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/percents"
+        app:layout_constraintStart_toEndOf="@+id/idpercents"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
     <androidx.appcompat.widget.AppCompatButton

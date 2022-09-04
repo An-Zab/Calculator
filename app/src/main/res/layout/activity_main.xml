@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/equal"
+        android:id="@+id/idequal"
         style="@style/ButtonAddExample"
         android:layout_marginStart="4dp"
         android:layout_marginTop="405dp"
@@ -51,7 +51,7 @@
         android:background="@drawable/equalbutton"
         android:text="="
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/delete"
+        app:layout_constraintStart_toEndOf="@+id/iddelete"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -63,19 +63,19 @@
         android:background="@drawable/buttonexample"
         android:gravity="center|top"
         android:text=","
-        app:layout_constraintEnd_toStartOf="@+id/delete"
+        app:layout_constraintEnd_toStartOf="@+id/iddelete"
         app:layout_constraintStart_toEndOf="@+id/id0"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
     <ImageButton
-        android:id="@+id/delete"
+        android:id="@+id/iddelete"
         style="@style/ButtonAddExample"
         android:layout_marginStart="4dp"
         android:layout_marginTop="405dp"
         android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:foreground="@drawable/backspaceimage"
-        app:layout_constraintEnd_toStartOf="@+id/equal"
+        app:layout_constraintEnd_toStartOf="@+id/idequal"
         app:layout_constraintStart_toEndOf="@+id/comma"
         app:layout_constraintTop_toBottomOf="@+id/resultTV"
         tools:ignore="SpeakableTextPresentCheck" />

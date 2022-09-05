@@ -2,8 +2,6 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,8 +26,44 @@ class MainActivity : AppCompatActivity() {
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) { i.setOnClickListener { numberButtonclick(i) } }
 
-        actionButtons = arrayOf(idplus, idmultiply, idminus, iddivide, idbrackets)
+        actionButtons = arrayOf(idplus, idminus, idbrackets)
         for (i in actionButtons) { i.setOnClickListener { actionButtonclick(i) } }
+
+        idmultiply.setOnClickListener {
+            var index : Int = strNumber.length-1
+
+            if (strNumber.length == 0) {
+                workingTV.text = strNumber
+            }
+
+            if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/' || strNumber.toString()[index]=='('
+                || strNumber.toString()[index]==')' || strNumber.toString()[index]=='.'){
+                strNumber.delete(strNumber.length-1, strNumber.length)
+                strNumber.append("*")
+                workingTV.text = strNumber
+            }
+            else { strNumber.append("*")
+                workingTV.text = strNumber }
+            index++
+        }
+
+
+        iddivide.setOnClickListener {
+            var index : Int = strNumber.length-1
+            if (strNumber.length == 0) {
+                workingTV.text = strNumber
+            }
+            if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/' || strNumber.toString()[index]=='('
+                || strNumber.toString()[index]==')' || strNumber.toString()[index]=='.'){
+                strNumber.delete(strNumber.length-1, strNumber.length)
+                strNumber.append("/")
+                workingTV.text = strNumber
+            }
+            else { strNumber.append("/")
+                workingTV.text = strNumber }
+            index++
+        }
+
         idbrackets.setOnClickListener {
             if (a % 2 != 0) {
             strNumber.append(idbrackets.text[0])
@@ -76,16 +110,40 @@ class MainActivity : AppCompatActivity() {
                 resultTV.text = "Format error"
             }
         }
+        iddot.setOnClickListener {
+            var index : Int = strNumber.length-1
+            if (strNumber.length == 0) {
+                workingTV.text = strNumber
+            }
+            if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/' || strNumber.toString()[index]=='('
+                || strNumber.toString()[index]==')' || strNumber.toString()[index]=='.'){
+                strNumber.delete(strNumber.length-1, strNumber.length)
+                strNumber.append(".")
+                workingTV.text = strNumber
+            }
+            else { strNumber.append(".")
+                workingTV.text = strNumber }
+            index++
+        }
+        
     }
-
-     private fun actionButtonclick(btn: Button) {
+    fun actionButtonclick(btn: Button) {
         strNumber.append(btn.text)
         workingTV.text = strNumber
     }
-     private fun numberButtonclick(btn : Button) {
+    fun numberButtonclick(btn : Button) {
         strNumber.append(btn.text)
         workingTV.text = strNumber
     }
 
+    override fun onStart() {
+        super.onStart()
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+    }
 }
 

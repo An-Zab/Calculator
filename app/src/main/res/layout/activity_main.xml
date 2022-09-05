@@ -11,9 +11,8 @@
     <TextView
         android:id="@+id/workingTV"
         style="@style/TVExample"
-        android:layout_marginTop="10dp"
-        android:lines="2"
-        android:maxLines="2"
+        android:layout_marginTop="4dp"
+        android:lines="3"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +22,7 @@
         android:id="@+id/resultTV"
         style="@style/TVExample"
         android:lines="1"
-        android:maxLines="1"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="4dp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +36,7 @@
         android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="0"
-        app:layout_constraintEnd_toStartOf="@+id/comma"
+        app:layout_constraintEnd_toStartOf="@+id/iddot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
@@ -55,14 +53,14 @@
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/comma"
+        android:id="@+id/iddot"
         style="@style/ButtonAddExample"
         android:layout_marginStart="4dp"
         android:layout_marginTop="405dp"
         android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
-        android:gravity="center|top"
-        android:text=","
+        android:gravity="bottom|center|top"
+        android:text="."
         app:layout_constraintEnd_toStartOf="@+id/iddelete"
         app:layout_constraintStart_toEndOf="@+id/id0"
         app:layout_constraintTop_toBottomOf="@+id/resultTV" />
@@ -76,7 +74,7 @@
         android:background="@drawable/buttonexample"
         android:foreground="@drawable/backspaceimage"
         app:layout_constraintEnd_toStartOf="@+id/idequal"
-        app:layout_constraintStart_toEndOf="@+id/comma"
+        app:layout_constraintStart_toEndOf="@+id/iddot"
         app:layout_constraintTop_toBottomOf="@+id/resultTV"
         tools:ignore="SpeakableTextPresentCheck" />
 

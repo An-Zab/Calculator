@@ -91,12 +91,13 @@ class MainActivity : AppCompatActivity() {
             if(strNumber.length >= 1) {
                 val e = Expression(strNumber.toString())
                 resultTV.text = e.calculate().toString()
-                strNumber.delete(0, strNumber.length) }
+                strNumber.delete(0, strNumber.length)
+                a=1 }
             else {
                 strNumber.append(resultTV.text)
                 workingTV.text = strNumber
                 resultTV.text = ""
-            }
+                a=1 }
         }
         idpercents.setOnClickListener {
             if (strNumber.length>=1) {
@@ -111,21 +112,31 @@ class MainActivity : AppCompatActivity() {
             }
         }
         iddot.setOnClickListener {
-            var index : Int = strNumber.length-1
+            var index1 : Int = strNumber.length-1
+            var index2 : Int = strNumber.length-1
             if (strNumber.length == 0) {
-                workingTV.text = strNumber
-            }
-            if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/' || strNumber.toString()[index]=='('
-                || strNumber.toString()[index]==')' || strNumber.toString()[index]=='.'){
-                strNumber.delete(strNumber.length-1, strNumber.length)
                 strNumber.append(".")
                 workingTV.text = strNumber
+            } else {
+            while (strNumber[index2] != '*' && strNumber[index2] != '/' && strNumber[index2] != '('
+                && strNumber[index2] != '(' && strNumber[index2] != '+' && strNumber[index2] != '-' && index2!=0)
+            {
+                index2--
             }
-            else { strNumber.append(".")
-                workingTV.text = strNumber }
-            index++
+            while (strNumber.toString()[index1] != '.' && index2 < index1 && index1!=0) {
+                index1--
+            }
+            if (index1 == index2 && strNumber[0] != '.') {
+                strNumber.append(".")
+                workingTV.text = strNumber
+            } else {
+                workingTV.text = strNumber
+                }
+            }
         }
-        
+
+
+
     }
     fun actionButtonclick(btn: Button) {
         strNumber.append(btn.text)

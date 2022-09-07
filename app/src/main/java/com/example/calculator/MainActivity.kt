@@ -7,6 +7,8 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.mariuszgromada.math.mxparser.*
 import java.lang.Exception
+import androidx.appcompat.app.AlertDialog
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        CreateSimpleDialog()
 
         workingTV = findViewById(R.id.workingTV)
         resultTV = findViewById(R.id.resultTV)
@@ -26,24 +29,51 @@ class MainActivity : AppCompatActivity() {
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) { i.setOnClickListener { numberButtonclick(i) } }
 
-        actionButtons = arrayOf(idplus, idminus, idbrackets)
-        for (i in actionButtons) { i.setOnClickListener { actionButtonclick(i) } }
+
+        idplus.setOnClickListener {
+            if (strNumber.length == 0) {
+                strNumber.append("+")
+                workingTV.text = strNumber
+            } else  {
+                if (strNumber[strNumber.length-1] == '+'  && strNumber.length > 1) {
+                workingTV.text = strNumber
+                }   else    {
+                strNumber.append("+")
+                workingTV.text = strNumber
+                }
+            }
+        }
+
+        idminus.setOnClickListener {
+            if (strNumber.length == 0 || strNumber.length == 1) {
+                strNumber.append("-")
+                workingTV.text = strNumber
+            } else  {
+                if (strNumber[strNumber.length-1] == '-' && strNumber[strNumber.length-2] == '-' && strNumber.length >= 2) {
+                    workingTV.text = strNumber
+                }   else    {
+                    strNumber.append("-")
+                    workingTV.text = strNumber
+                }
+            }
+        }
 
         idmultiply.setOnClickListener {
             var index : Int = strNumber.length-1
 
             if (strNumber.length == 0) {
                 workingTV.text = strNumber
-            }
-
-            if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/' || strNumber.toString()[index]=='('
-                || strNumber.toString()[index]==')' || strNumber.toString()[index]=='.'){
+            } else {
+                if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/'
+                || strNumber.toString()[index]=='(' || strNumber.toString()[index]=='.'){
                 strNumber.delete(strNumber.length-1, strNumber.length)
                 strNumber.append("*")
                 workingTV.text = strNumber
             }
-            else { strNumber.append("*")
-                workingTV.text = strNumber }
+            else    { strNumber.append("*")
+                    workingTV.text = strNumber }}
+
+
             index++
         }
 
@@ -52,15 +82,16 @@ class MainActivity : AppCompatActivity() {
             var index : Int = strNumber.length-1
             if (strNumber.length == 0) {
                 workingTV.text = strNumber
-            }
-            if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/' || strNumber.toString()[index]=='('
-                || strNumber.toString()[index]==')' || strNumber.toString()[index]=='.'){
+            } else {
+                if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/'
+                || strNumber.toString()[index]=='(' || strNumber.toString()[index]=='.'){
                 strNumber.delete(strNumber.length-1, strNumber.length)
                 strNumber.append("/")
                 workingTV.text = strNumber
             }
-            else { strNumber.append("/")
-                workingTV.text = strNumber }
+            else    { strNumber.append("/")
+                    workingTV.text = strNumber }}
+
             index++
         }
 
@@ -73,6 +104,7 @@ class MainActivity : AppCompatActivity() {
             workingTV.text = strNumber}
             a++
         }
+
         AC.setOnClickListener {
             strNumber.delete(0,strNumber.length)
             resultTV.text = ""
@@ -138,10 +170,22 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    fun actionButtonclick(btn: Button) {
-        strNumber.append(btn.text)
-        workingTV.text = strNumber
+
+    fun CreateSimpleDialog()
+    {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Вітаю дарагі карыстальнік! \nHello dear user!")
+        builder.setMessage(" Перад табой бэта-версія праграмы калькулятар. Спадзяюся што ў цябе застануцца выключна прыемныя ўраджанні." +
+        "\n This is the beta version of the calculator program. I hope that you will have good experiences with it." +
+        "\n Кантакты/Contacts: https://www.linkedin.com/in/anatoly-zabauski/")
+        builder.setIcon(R.drawable.imagetitle)
+        builder.setPositiveButton("Continue", { dialog, which ->
+
+        })
+
+        builder.show()
     }
+
     fun numberButtonclick(btn : Button) {
         strNumber.append(btn.text)
         workingTV.text = strNumber

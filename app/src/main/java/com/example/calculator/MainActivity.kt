@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append("+")
                 workingTV.text = strNumber
             } else  {
-                if (strNumber[strNumber.length-1] == '+'  && strNumber.length > 1) {
+                if (strNumber[strNumber.length-1] == '+'  && strNumber.length > 1 || strNumber[0] == '+') {
                 workingTV.text = strNumber
                 }   else    {
                 strNumber.append("+")
@@ -125,11 +125,18 @@ class MainActivity : AppCompatActivity() {
                 resultTV.text = e.calculate().toString()
                 strNumber.delete(0, strNumber.length)
                 a=1 }
-            else {
-                strNumber.append(resultTV.text)
-                workingTV.text = strNumber
+            else { if(resultTV.text == "Error in expression") {
                 resultTV.text = ""
-                a=1 }
+                workingTV.text = ""
+                strNumber.delete(0, strNumber.length)
+            } else {
+                strNumber.append(workingTV.text)
+                workingTV.text = resultTV.text
+                resultTV.text = ""
+                a=1 }}
+            if (resultTV.text == "NaN") {
+                resultTV.text = "Error in expression"
+            }
         }
         idpercents.setOnClickListener {
             if (strNumber.length>=1) {
@@ -171,16 +178,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun CreateSimpleDialog()
-    {
+    fun CreateSimpleDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Вітаю дарагі карыстальнік! \nHello dear user!")
         builder.setMessage(" Перад табой бэта-версія праграмы калькулятар. Спадзяюся што ў цябе застануцца выключна прыемныя ўраджанні." +
-        "\n This is the beta version of the calculator program. I hope that you will have good experiences with it." +
-        "\n Кантакты/Contacts: https://www.linkedin.com/in/anatoly-zabauski/")
+        "\n This is the beta version of the calculator program. I hope that you will have good experiences with it.")
         builder.setIcon(R.drawable.imagetitle)
         builder.setPositiveButton("Continue", { dialog, which ->
-
         })
 
         builder.show()

@@ -14,17 +14,16 @@ import androidx.appcompat.app.AlertDialog
 class MainActivity : AppCompatActivity() {
     private var strNumber = StringBuilder()
     private lateinit var workingTV: TextView
-    private lateinit var resultTV: TextView
+    private lateinit var resultTV: String
     var a = 1
     private lateinit var numberButtons : Array<Button>
-    private lateinit var actionButtons : Array<Button>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         CreateSimpleDialog()
 
         workingTV = findViewById(R.id.workingTV)
-        resultTV = findViewById(R.id.resultTV)
+        //resultTV = findViewById(R.id.resultTV)
 
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) { i.setOnClickListener { numberButtonclick(i) } }
@@ -61,11 +60,11 @@ class MainActivity : AppCompatActivity() {
         idmultiply.setOnClickListener {
             var index : Int = strNumber.length-1
 
-            if (strNumber.length == 0) {
+            if (strNumber.length == 0 || strNumber.toString()[index] == '(') {
                 workingTV.text = strNumber
             } else {
                 if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/'
-                || strNumber.toString()[index]=='(' || strNumber.toString()[index]=='.'){
+                 || strNumber.toString()[index]=='.'){
                 strNumber.delete(strNumber.length-1, strNumber.length)
                 strNumber.append("*")
                 workingTV.text = strNumber
@@ -80,11 +79,11 @@ class MainActivity : AppCompatActivity() {
 
         iddivide.setOnClickListener {
             var index : Int = strNumber.length-1
-            if (strNumber.length == 0) {
+            if (strNumber.length == 0 || strNumber.toString()[index] == '(') {
                 workingTV.text = strNumber
             } else {
                 if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/'
-                || strNumber.toString()[index]=='(' || strNumber.toString()[index]=='.'){
+                || strNumber.toString()[index]=='.'){
                 strNumber.delete(strNumber.length-1, strNumber.length)
                 strNumber.append("/")
                 workingTV.text = strNumber
@@ -107,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 
         AC.setOnClickListener {
             strNumber.delete(0,strNumber.length)
-            resultTV.text = ""
+            resultTV = ""
             workingTV.text = strNumber
             a = 1
         }
@@ -122,20 +121,23 @@ class MainActivity : AppCompatActivity() {
         idequal.setOnClickListener {
             if(strNumber.length >= 1) {
                 val e = Expression(strNumber.toString())
-                resultTV.text = e.calculate().toString()
+                resultTV = e.calculate().toString()
                 strNumber.delete(0, strNumber.length)
+                workingTV.text = resultTV
+                strNumber.append(resultTV)
                 a=1 }
-            else { if(resultTV.text == "Error in expression") {
-                resultTV.text = ""
+            else { if(resultTV == "Error in expression") {
+                resultTV = ""
                 workingTV.text = ""
                 strNumber.delete(0, strNumber.length)
             } else {
                 strNumber.append(workingTV.text)
-                workingTV.text = resultTV.text
-                resultTV.text = ""
+                workingTV.text = resultTV
+                resultTV = ""
                 a=1 }}
-            if (resultTV.text == "NaN") {
-                resultTV.text = "Error in expression"
+            if (workingTV.text == "NaN") {
+                workingTV.text = "Error in expression"
+                strNumber.delete(0, strNumber.length)
             }
         }
         idpercents.setOnClickListener {
@@ -144,10 +146,10 @@ class MainActivity : AppCompatActivity() {
                 var a = e.calculate()/100
                 strNumber.delete(0, strNumber.length)
                 strNumber.append(a.toString())
-                resultTV.text = "$a"
+                resultTV = "$a"
             } else {
                 strNumber.delete(0, strNumber.length)
-                resultTV.text = "Format error"
+                resultTV = "Format error"
             }
         }
         iddot.setOnClickListener {

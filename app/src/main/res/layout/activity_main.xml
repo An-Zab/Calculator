@@ -10,266 +10,220 @@
     <TextView
         android:id="@+id/workingTV"
         style="@style/TVExample"
-        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
         android:lines="3"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/resultTV"
-        style="@style/TVExample"
-        android:layout_marginTop="10dp"
-        android:lines="1"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id0"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="405dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iddot"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/id1" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idequal"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="405dp"
-        android:layout_marginEnd="6dp"
         android:background="@drawable/equalbutton"
         android:text="="
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iddelete"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/idplus" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/iddot"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="405dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:gravity="bottom|center|top"
         android:text="."
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iddelete"
         app:layout_constraintStart_toEndOf="@+id/id0"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/id2" />
 
     <ImageButton
         android:id="@+id/iddelete"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="405dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:foreground="@drawable/backspaceimage"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/idequal"
         app:layout_constraintStart_toEndOf="@+id/iddot"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV"
+        app:layout_constraintTop_toBottomOf="@+id/id3"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id1"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/id0"
         app:layout_constraintEnd_toStartOf="@+id/id2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/id4" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id2"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="2"
+        app:layout_constraintBottom_toTopOf="@+id/iddot"
         app:layout_constraintEnd_toStartOf="@+id/id3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/id1"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/id5" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idplus"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginEnd="6dp"
         android:background="@drawable/buttonexample"
         android:text="+"
+        app:layout_constraintBottom_toTopOf="@+id/idequal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id3"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/idminus" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id3"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="306dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="3"
         android:textColor="#C5C6C7"
+        app:layout_constraintBottom_toTopOf="@+id/iddelete"
         app:layout_constraintEnd_toStartOf="@+id/idplus"
         app:layout_constraintStart_toEndOf="@+id/id2"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/id6" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idminus"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="207dp"
-        android:layout_marginEnd="6dp"
         android:background="@drawable/buttonexample"
         android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/idplus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id6"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/idmultiply" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id6"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="207dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="6"
+        app:layout_constraintBottom_toTopOf="@+id/id3"
         app:layout_constraintEnd_toStartOf="@+id/idminus"
         app:layout_constraintStart_toEndOf="@+id/id5"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
-
+        app:layout_constraintTop_toBottomOf="@+id/id9" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idbrackets"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="(  )"
+        app:layout_constraintBottom_toTopOf="@+id/id8"
         app:layout_constraintEnd_toStartOf="@+id/idpercents"
         app:layout_constraintStart_toEndOf="@+id/AC"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/AC"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/acbutton"
         android:text="AC"
+        app:layout_constraintBottom_toTopOf="@+id/id7"
         app:layout_constraintEnd_toStartOf="@+id/idbrackets"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id7"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="7"
+        app:layout_constraintBottom_toTopOf="@+id/id4"
         app:layout_constraintEnd_toStartOf="@+id/id8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/AC" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idpercents"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="%"
+        app:layout_constraintBottom_toTopOf="@+id/id9"
         app:layout_constraintEnd_toStartOf="@+id/iddivide"
         app:layout_constraintStart_toEndOf="@+id/idbrackets"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id5"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="207dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="5"
+        app:layout_constraintBottom_toTopOf="@+id/id2"
         app:layout_constraintEnd_toStartOf="@+id/id6"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toEndOf="@+id/id4"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/id8" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idmultiply"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="6dp"
         android:background="@drawable/buttonexample"
         android:text="*"
+        app:layout_constraintBottom_toTopOf="@+id/idminus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/id9"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/iddivide" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id9"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="9"
+        app:layout_constraintBottom_toTopOf="@+id/id6"
         app:layout_constraintEnd_toStartOf="@+id/idmultiply"
         app:layout_constraintStart_toEndOf="@+id/id8"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/idpercents"
+        app:layout_constraintVertical_bias="0.266" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id8"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="8"
+        app:layout_constraintBottom_toTopOf="@+id/id5"
         app:layout_constraintEnd_toStartOf="@+id/id9"
         app:layout_constraintStart_toEndOf="@+id/id7"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/idbrackets"
+        app:layout_constraintVertical_bias="0.266" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/iddivide"
         style="@style/ButtonAddExample"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="6dp"
         android:background="@drawable/buttonexample"
         android:text="/"
+        app:layout_constraintBottom_toTopOf="@+id/idmultiply"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/idpercents"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id4"
         style="@style/ButtonNumberExample"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="207dp"
-        android:layout_marginEnd="4dp"
         android:background="@drawable/buttonexample"
         android:text="4"
+        app:layout_constraintBottom_toTopOf="@+id/id1"
         app:layout_constraintEnd_toStartOf="@+id/id5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTV" />
+        app:layout_constraintTop_toBottomOf="@+id/id7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -10,11 +11,10 @@ import java.lang.Exception
 import androidx.appcompat.app.AlertDialog
 
 
-
 class MainActivity : AppCompatActivity() {
     private var strNumber = StringBuilder()
     private lateinit var workingTV: TextView
-    private lateinit var resultTV: String
+    private var resultTV: String = ""
     var a = 1
     private lateinit var numberButtons : Array<Button>
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
         CreateSimpleDialog()
 
         workingTV = findViewById(R.id.workingTV)
-        //resultTV = findViewById(R.id.resultTV)
 
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) { i.setOnClickListener { numberButtonclick(i) } }
@@ -31,11 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         idplus.setOnClickListener {
             if (strNumber.length == 0) {
-                strNumber.append("+")
                 workingTV.text = strNumber
             } else  {
-                if (strNumber[strNumber.length-1] == '+'  && strNumber.length > 1 || strNumber[0] == '+') {
-                workingTV.text = strNumber
+                if (strNumber.last() == '+' || strNumber.last() == '-') {
+                    strNumber.delete(strNumber.length-1, strNumber.length)
+                    strNumber.append('+')
+                    workingTV.text = strNumber
                 }   else    {
                 strNumber.append("+")
                 workingTV.text = strNumber
@@ -44,11 +44,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         idminus.setOnClickListener {
-            if (strNumber.length == 0 || strNumber.length == 1) {
+            if (strNumber.length == 0) {
                 strNumber.append("-")
                 workingTV.text = strNumber
             } else  {
-                if (strNumber[strNumber.length-1] == '-' && strNumber[strNumber.length-2] == '-' && strNumber.length >= 2) {
+                if (strNumber.last() == '+' || strNumber.last() == '-') {
+                    strNumber.delete(strNumber.length-1, strNumber.length)
+                    strNumber.append('-')
                     workingTV.text = strNumber
                 }   else    {
                     strNumber.append("-")
@@ -58,50 +60,70 @@ class MainActivity : AppCompatActivity() {
         }
 
         idmultiply.setOnClickListener {
-            var index : Int = strNumber.length-1
-
-            if (strNumber.length == 0 || strNumber.toString()[index] == '(') {
+            if (strNumber.length == 0 || strNumber.last() == '(') {
                 workingTV.text = strNumber
-            } else {
-                if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/'
-                 || strNumber.toString()[index]=='.'){
+            } else { if (strNumber.last() == '*' || strNumber.last()=='/'
+                || strNumber.last()=='.' || strNumber.last()=='+'
+                || strNumber.last()=='-'){
                 strNumber.delete(strNumber.length-1, strNumber.length)
                 strNumber.append("*")
                 workingTV.text = strNumber
+            } else {
+                strNumber.append("*")
+                workingTV.text = strNumber
+                }
             }
-            else    { strNumber.append("*")
-                    workingTV.text = strNumber }}
-
-
-            index++
+            try{
+                if (strNumber.length >=2 && strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*'
+                    || strNumber[strNumber.length-2] == '+' || strNumber[strNumber.length-2] == '-'){
+                    strNumber.deleteCharAt(strNumber.length-2)
+                    workingTV.text = strNumber
+                }} catch (e: Exception) {
+                strNumber.delete(0, strNumber.length)
+                workingTV.text = ""
+            }
         }
 
 
         iddivide.setOnClickListener {
-            var index : Int = strNumber.length-1
-            if (strNumber.length == 0 || strNumber.toString()[index] == '(') {
+            if (strNumber.length == 0 || strNumber.last() == '(') {
                 workingTV.text = strNumber
-            } else {
-                if (strNumber.toString()[index]=='*' || strNumber.toString()[index]=='/'
-                || strNumber.toString()[index]=='.'){
+            } else { if (strNumber.last() == '*' || strNumber.last()=='/'
+                || strNumber.last()=='.' || strNumber.last()=='+'
+                || strNumber.last()=='-'){
                 strNumber.delete(strNumber.length-1, strNumber.length)
                 strNumber.append("/")
                 workingTV.text = strNumber
+            } else {
+                strNumber.append("/")
+                workingTV.text = strNumber
+                }
             }
-            else    { strNumber.append("/")
-                    workingTV.text = strNumber }}
-
-            index++
+            try{
+            if (strNumber.length >=2 && strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*'
+                || strNumber[strNumber.length-2] == '+' || strNumber[strNumber.length-2] == '-'){
+                strNumber.deleteCharAt(strNumber.length-2)
+                workingTV.text = strNumber
+            }} catch (e: Exception) {
+                strNumber.delete(0, strNumber.length)
+                workingTV.text = ""
+            }
         }
 
         idbrackets.setOnClickListener {
             if (a % 2 != 0) {
             strNumber.append(idbrackets.text[0])
             workingTV.text = strNumber
-            }
-            else  {strNumber.append(idbrackets.text[3])
-            workingTV.text = strNumber}
             a++
+            } else  {
+                if (a % 2 == 0 && strNumber.last() != '(') {
+                strNumber.append(idbrackets.text[3])
+                workingTV.text = strNumber
+                a++
+                } else {
+                    workingTV.text = strNumber
+                }
+            }
         }
 
         AC.setOnClickListener {
@@ -112,13 +134,29 @@ class MainActivity : AppCompatActivity() {
         }
         iddelete.setOnClickListener{
             try {
-                strNumber.setLength(strNumber.length-1)
-                workingTV.text = strNumber
-            } catch (e: Exception){
-                workingTV.text = ""
-            }
+                if (strNumber.last() == ')' || strNumber.last() == '(') {
+                    strNumber.setLength(strNumber.length - 1)
+                    workingTV.text = strNumber
+                    a--
+                } else {
+                    strNumber.setLength(strNumber.length - 1)
+                    workingTV.text = strNumber
+                    }
+                }
+            catch (e: Exception){
+                workingTV.text = ""}
         }
         idequal.setOnClickListener {
+            if (strNumber.length == 0){
+                workingTV.text = ""
+            }
+            if (a % 2 == 0 && strNumber.length != 1) {
+                strNumber.append(')')
+            }
+            if (strNumber.lastOrNull() == '*' || strNumber.lastOrNull() == '/'
+                || strNumber.lastOrNull() == '.') {
+                strNumber.delete(strNumber.length-1, strNumber.length)
+            }
             if(strNumber.length >= 1) {
                 val e = Expression(strNumber.toString())
                 resultTV = e.calculate().toString()
@@ -126,7 +164,7 @@ class MainActivity : AppCompatActivity() {
                 workingTV.text = resultTV
                 strNumber.append(resultTV)
                 a=1 }
-            else { if(resultTV == "Error in expression") {
+            else { if(workingTV.text == "Error in expression") {
                 resultTV = ""
                 workingTV.text = ""
                 strNumber.delete(0, strNumber.length)
@@ -134,11 +172,13 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append(workingTV.text)
                 workingTV.text = resultTV
                 resultTV = ""
-                a=1 }}
+                a=1 }
+            }
             if (workingTV.text == "NaN") {
                 workingTV.text = "Error in expression"
                 strNumber.delete(0, strNumber.length)
             }
+
         }
         idpercents.setOnClickListener {
             if (strNumber.length>=1) {
@@ -146,7 +186,7 @@ class MainActivity : AppCompatActivity() {
                 var a = e.calculate()/100
                 strNumber.delete(0, strNumber.length)
                 strNumber.append(a.toString())
-                resultTV = "$a"
+                workingTV.text = "$a"
             } else {
                 strNumber.delete(0, strNumber.length)
                 resultTV = "Format error"
@@ -156,7 +196,6 @@ class MainActivity : AppCompatActivity() {
             var index1 : Int = strNumber.length-1
             var index2 : Int = strNumber.length-1
             if (strNumber.length == 0) {
-                strNumber.append(".")
                 workingTV.text = strNumber
             } else {
             while (strNumber[index2] != '*' && strNumber[index2] != '/' && strNumber[index2] != '('

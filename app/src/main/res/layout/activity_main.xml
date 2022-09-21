@@ -48,17 +48,6 @@
         app:layout_constraintStart_toEndOf="@+id/id0"
         app:layout_constraintTop_toBottomOf="@+id/id2" />
 
-    <ImageButton
-        android:id="@+id/iddelete"
-        style="@style/ButtonAddExample"
-        android:background="@drawable/buttonexample"
-        android:foreground="@drawable/backspaceimage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/idequal"
-        app:layout_constraintStart_toEndOf="@+id/iddot"
-        app:layout_constraintTop_toBottomOf="@+id/id3"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id1"
         style="@style/ButtonNumberExample"
@@ -224,6 +213,16 @@
         app:layout_constraintEnd_toStartOf="@+id/id5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id7" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/iddelete"
+        style="@style/ButtonNumberExample"
+        android:background="@drawable/buttonexample"
+        android:text="⌫"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idequal"
+        app:layout_constraintStart_toEndOf="@+id/iddot"
+        app:layout_constraintTop_toBottomOf="@+id/id3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

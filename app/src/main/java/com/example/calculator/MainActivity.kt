@@ -11,6 +11,7 @@ import java.lang.Exception
 import androidx.appcompat.app.AlertDialog
 
 
+
 class MainActivity : AppCompatActivity() {
     private var strNumber = StringBuilder()
     private lateinit var workingTV: TextView
@@ -32,13 +33,21 @@ class MainActivity : AppCompatActivity() {
             if (strNumber.length == 0) {
                 workingTV.text = strNumber
             } else  {
-                if (strNumber.last() == '+' || strNumber.last() == '-') {
-                    strNumber.delete(strNumber.length-1, strNumber.length)
+                if (strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*') {
+                    strNumber.deleteCharAt(strNumber.length-2)
+                    strNumber.deleteCharAt(strNumber.length-1)
                     strNumber.append('+')
                     workingTV.text = strNumber
                 }   else    {
-                strNumber.append("+")
-                workingTV.text = strNumber
+                    if(strNumber.last() == '+' || strNumber.last() == '-'
+                        || strNumber.last() == '*' || strNumber.last() == '/'
+                    ) {
+                        strNumber.delete(strNumber.length-1, strNumber.length)
+                        strNumber.append('+')
+                        workingTV.text = strNumber
+                    } else {
+                    strNumber.append("+")
+                    workingTV.text = strNumber}
                 }
             }
         }
@@ -111,18 +120,23 @@ class MainActivity : AppCompatActivity() {
         }
 
         idbrackets.setOnClickListener {
-            if (a % 2 != 0) {
-            strNumber.append(idbrackets.text[0])
-            workingTV.text = strNumber
-            a++
-            } else  {
-                if (a % 2 == 0 && strNumber.last() != '(') {
-                strNumber.append(idbrackets.text[3])
+            try {if (a % 2 != 0) {
+                strNumber.append(idbrackets.text[0])
                 workingTV.text = strNumber
                 a++
+            } else {
+                if (a % 2 == 0 && strNumber.last() != '(') {
+                    strNumber.append(idbrackets.text[3])
+                    workingTV.text = strNumber
+                    a++
                 } else {
                     workingTV.text = strNumber
                 }
+            }
+            } catch (e: Exception){
+                strNumber.append(idbrackets.text[0])
+                workingTV.text = strNumber
+                a++
             }
         }
 
@@ -181,6 +195,9 @@ class MainActivity : AppCompatActivity() {
 
         }
         idpercents.setOnClickListener {
+            if (a % 2 == 0 && strNumber.length != 1) {
+                strNumber.append(')')
+            }
             if (strNumber.length>=1) {
                 val e = Expression(strNumber.toString())
                 var a = e.calculate()/100
@@ -189,7 +206,11 @@ class MainActivity : AppCompatActivity() {
                 workingTV.text = "$a"
             } else {
                 strNumber.delete(0, strNumber.length)
-                resultTV = "Format error"
+                workingTV.text = "Nothing to count"
+            }
+            if (workingTV.text == "NaN") {
+                workingTV.text = "Error in expression"
+                strNumber.delete(0, strNumber.length)
             }
         }
         iddot.setOnClickListener {
@@ -212,6 +233,13 @@ class MainActivity : AppCompatActivity() {
             } else {
                 workingTV.text = strNumber
                 }
+            }
+            if (strNumber[strNumber.length-2] == '+' || strNumber[strNumber.length-2] == '-'
+                || strNumber[strNumber.length-2] == '*' || strNumber[strNumber.length-2] == '/'
+                || strNumber[strNumber.length-2] == ')' || strNumber[strNumber.length-2] == '('
+            ){
+                strNumber.delete(strNumber.length-1, strNumber.length)
+                workingTV.text = strNumber
             }
         }
 

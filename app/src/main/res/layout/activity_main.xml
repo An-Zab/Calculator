@@ -65,14 +65,13 @@
         android:text="2"
         app:layout_constraintBottom_toTopOf="@+id/iddot"
         app:layout_constraintEnd_toStartOf="@+id/id3"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/id1"
         app:layout_constraintTop_toBottomOf="@+id/id5" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idplus"
         style="@style/ButtonAddExample"
-        android:background="@drawable/buttonexample"
+        android:background="@drawable/buttonfunexample"
         android:text="+"
         app:layout_constraintBottom_toTopOf="@+id/idequal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +83,6 @@
         style="@style/ButtonNumberExample"
         android:background="@drawable/buttonexample"
         android:text="3"
-        android:textColor="#C5C6C7"
         app:layout_constraintBottom_toTopOf="@+id/iddelete"
         app:layout_constraintEnd_toStartOf="@+id/idplus"
         app:layout_constraintStart_toEndOf="@+id/id2"
@@ -93,7 +91,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idminus"
         style="@style/ButtonAddExample"
-        android:background="@drawable/buttonexample"
+        android:background="@drawable/buttonfunexample"
         android:text="-"
         app:layout_constraintBottom_toTopOf="@+id/idplus"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,7 +112,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idbrackets"
         style="@style/ButtonAddExample"
-        android:background="@drawable/buttonexample"
+        android:background="@drawable/buttonfunexample"
         android:text="(  )"
         app:layout_constraintBottom_toTopOf="@+id/id8"
         app:layout_constraintEnd_toStartOf="@+id/idpercents"
@@ -144,7 +142,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idpercents"
         style="@style/ButtonAddExample"
-        android:background="@drawable/buttonexample"
+        android:background="@drawable/buttonfunexample"
         android:text="%"
         app:layout_constraintBottom_toTopOf="@+id/id9"
         app:layout_constraintEnd_toStartOf="@+id/iddivide"
@@ -158,14 +156,13 @@
         android:text="5"
         app:layout_constraintBottom_toTopOf="@+id/id2"
         app:layout_constraintEnd_toStartOf="@+id/id6"
-        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toEndOf="@+id/id4"
         app:layout_constraintTop_toBottomOf="@+id/id8" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idmultiply"
         style="@style/ButtonAddExample"
-        android:background="@drawable/buttonexample"
+        android:background="@drawable/buttonfunexample"
         android:text="*"
         app:layout_constraintBottom_toTopOf="@+id/idminus"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,8 +177,7 @@
         app:layout_constraintBottom_toTopOf="@+id/id6"
         app:layout_constraintEnd_toStartOf="@+id/idmultiply"
         app:layout_constraintStart_toEndOf="@+id/id8"
-        app:layout_constraintTop_toBottomOf="@+id/idpercents"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintTop_toBottomOf="@+id/idpercents" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id8"
@@ -191,13 +187,12 @@
         app:layout_constraintBottom_toTopOf="@+id/id5"
         app:layout_constraintEnd_toStartOf="@+id/id9"
         app:layout_constraintStart_toEndOf="@+id/id7"
-        app:layout_constraintTop_toBottomOf="@+id/idbrackets"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintTop_toBottomOf="@+id/idbrackets" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/iddivide"
         style="@style/ButtonAddExample"
-        android:background="@drawable/buttonexample"
+        android:background="@drawable/buttonfunexample"
         android:text="/"
         app:layout_constraintBottom_toTopOf="@+id/idmultiply"
         app:layout_constraintEnd_toEndOf="parent"

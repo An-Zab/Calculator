@@ -244,6 +244,21 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        idsin.setOnClickListener {
+            mXparser.setDegreesMode()
+            var e = Expression("sin(90)")
+            Log.d("MyLog", "sin90 v gradusah raven: " + e.calculate())
+            mXparser.setRadiansMode()
+            e = Expression("sin(90)")
+        }
+
+
+
+
+
+
+
+
 
     }
 

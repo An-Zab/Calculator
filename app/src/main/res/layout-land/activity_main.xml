@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundcolor">
+
+    <TextView
+        android:id="@+id/workingTV"
+        style="@style/TVExampleland"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:lines="2"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/AC"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/acbutton"
+        android:text="AC"
+        app:layout_constraintBottom_toTopOf="@+id/idpercents"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idbrackets"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idequal"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/equalbutton"
+        android:text="="
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idplus"
+        app:layout_constraintTop_toBottomOf="@+id/iddivide" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idplus"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonfunexample"
+        android:text="+"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idequal"
+        app:layout_constraintStart_toEndOf="@+id/iddelete"
+        app:layout_constraintTop_toBottomOf="@+id/idmultiply" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idminus"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonfunexample"
+        android:text="-"
+        app:layout_constraintBottom_toTopOf="@+id/idmultiply"
+        app:layout_constraintEnd_toStartOf="@+id/idpercents"
+        app:layout_constraintStart_toEndOf="@+id/id6"
+        app:layout_constraintTop_toBottomOf="@+id/idbrackets" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idbrackets"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonfunexample"
+        android:text="(  )"
+        app:layout_constraintBottom_toTopOf="@+id/idminus"
+        app:layout_constraintEnd_toStartOf="@+id/AC"
+        app:layout_constraintStart_toEndOf="@+id/id6"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idpercents"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonfunexample"
+        android:text="%"
+        app:layout_constraintBottom_toTopOf="@+id/iddivide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idminus"
+        app:layout_constraintTop_toBottomOf="@+id/AC" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idmultiply"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonfunexample"
+        android:text="*"
+        app:layout_constraintBottom_toTopOf="@+id/idplus"
+        app:layout_constraintEnd_toStartOf="@+id/iddivide"
+        app:layout_constraintStart_toEndOf="@+id/id3"
+        app:layout_constraintTop_toBottomOf="@+id/idminus" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/iddivide"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonfunexample"
+        android:text="/"
+        app:layout_constraintBottom_toTopOf="@+id/idequal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idmultiply"
+        app:layout_constraintTop_toBottomOf="@+id/idpercents" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id9"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="9"
+        app:layout_constraintBottom_toTopOf="@+id/id6"
+        app:layout_constraintEnd_toStartOf="@+id/idbrackets"
+        app:layout_constraintStart_toEndOf="@+id/id8"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id6"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="6"
+        app:layout_constraintBottom_toTopOf="@+id/id3"
+        app:layout_constraintEnd_toStartOf="@+id/idminus"
+        app:layout_constraintStart_toEndOf="@+id/id5"
+        app:layout_constraintTop_toBottomOf="@+id/id9" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id3"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="3"
+        app:layout_constraintBottom_toTopOf="@+id/iddelete"
+        app:layout_constraintEnd_toStartOf="@+id/idmultiply"
+        app:layout_constraintStart_toEndOf="@+id/id2"
+        app:layout_constraintTop_toBottomOf="@+id/id6" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/iddelete"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="⌫"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idplus"
+        app:layout_constraintStart_toEndOf="@+id/iddot"
+        app:layout_constraintTop_toBottomOf="@+id/id3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id8"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="8"
+        app:layout_constraintBottom_toTopOf="@+id/id5"
+        app:layout_constraintEnd_toStartOf="@+id/id9"
+        app:layout_constraintStart_toEndOf="@+id/id7"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id5"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="5"
+        app:layout_constraintBottom_toTopOf="@+id/id2"
+        app:layout_constraintEnd_toStartOf="@+id/id6"
+        app:layout_constraintStart_toEndOf="@+id/id4"
+        app:layout_constraintTop_toBottomOf="@+id/id8" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id2"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="2"
+        app:layout_constraintBottom_toTopOf="@+id/iddot"
+        app:layout_constraintEnd_toStartOf="@+id/id3"
+        app:layout_constraintStart_toEndOf="@+id/id1"
+        app:layout_constraintTop_toBottomOf="@+id/id5" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/iddot"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:gravity="bottom|center|top"
+        android:text="."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iddelete"
+        app:layout_constraintStart_toEndOf="@+id/id0"
+        app:layout_constraintTop_toBottomOf="@+id/id2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id7"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="7"
+        app:layout_constraintBottom_toTopOf="@+id/id4"
+        app:layout_constraintEnd_toStartOf="@+id/id8"
+        app:layout_constraintStart_toEndOf="@+id/idextent"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id4"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="4"
+        app:layout_constraintBottom_toTopOf="@+id/id1"
+        app:layout_constraintEnd_toStartOf="@+id/id5"
+        app:layout_constraintStart_toEndOf="@+id/idsqrt"
+        app:layout_constraintTop_toBottomOf="@+id/id7" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id1"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/id0"
+        app:layout_constraintEnd_toStartOf="@+id/id2"
+        app:layout_constraintStart_toEndOf="@+id/idlog"
+        app:layout_constraintTop_toBottomOf="@+id/id4" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id0"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iddot"
+        app:layout_constraintStart_toEndOf="@+id/idfactorial"
+        app:layout_constraintTop_toBottomOf="@+id/id1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idsqrt"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="√"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toTopOf="@+id/idlog"
+        app:layout_constraintEnd_toStartOf="@+id/id4"
+        app:layout_constraintStart_toEndOf="@+id/idXvstepeni2"
+        app:layout_constraintTop_toBottomOf="@+id/idextent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idextent"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="^"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toTopOf="@+id/idsqrt"
+        app:layout_constraintEnd_toStartOf="@+id/id7"
+        app:layout_constraintStart_toEndOf="@+id/idXvstepeniY"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idfactorial"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="!"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/id0"
+        app:layout_constraintStart_toEndOf="@+id/ide"
+        app:layout_constraintTop_toBottomOf="@+id/idlog" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idXvstepeniY"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="x\u02b8"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toTopOf="@+id/idXvstepeni2"
+        app:layout_constraintEnd_toStartOf="@+id/idextent"
+        app:layout_constraintStart_toEndOf="@+id/idsin"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idXvstepeni2"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="Х\u00B2"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toTopOf="@+id/idpi"
+        app:layout_constraintEnd_toStartOf="@+id/idsqrt"
+        app:layout_constraintStart_toEndOf="@+id/idcos"
+        app:layout_constraintTop_toBottomOf="@+id/idXvstepeniY" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idpi"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="π"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toTopOf="@+id/ide"
+        app:layout_constraintEnd_toStartOf="@+id/idlog"
+        app:layout_constraintStart_toEndOf="@+id/idtg"
+        app:layout_constraintTop_toBottomOf="@+id/idXvstepeni2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idlog"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="log"
+        android:backgroundTint="@color/buttoncolorspecial"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/idfactorial"
+        app:layout_constraintEnd_toStartOf="@+id/id1"
+        app:layout_constraintStart_toEndOf="@+id/idpi"
+        app:layout_constraintTop_toBottomOf="@+id/idsqrt" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/ide"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="e"
+        android:backgroundTint="@color/buttoncolorspecial"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idfactorial"
+        app:layout_constraintStart_toEndOf="@+id/idctg"
+        app:layout_constraintTop_toBottomOf="@+id/idpi" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idsin"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:textAllCaps="false"
+        android:text="sin"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toTopOf="@+id/idcos"
+        app:layout_constraintEnd_toStartOf="@+id/idXvstepeniY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/workingTV" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idcos"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="cos"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/buttoncolorspecial"
+        app:layout_constraintBottom_toTopOf="@+id/idtg"
+        app:layout_constraintEnd_toStartOf="@+id/idXvstepeni2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idsin" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idtg"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:backgroundTint="@color/buttoncolorspecial"
+        android:text="tg"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/idctg"
+        app:layout_constraintEnd_toStartOf="@+id/idpi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idcos" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idctg"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:text="ctg"
+        android:backgroundTint="@color/buttoncolorspecial"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idtg" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        style="@style/ButtonAddExampleland"
+        android:background="@drawable/buttonexample"
+        android:backgroundTint="@color/buttoncolorspecial"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="1dp"
+        android:textSize="16sp"
+        android:textOff="now\nRAD"
+        android:textOn="now\DGR"
+        app:layout_constraintBottom_toTopOf="@+id/workingTV"
+        app:layout_constraintEnd_toStartOf="@+id/idXvstepeniY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

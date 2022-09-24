@@ -8,10 +8,20 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+
     <style name="ButtonAddExample">
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">90dp</item>
         <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/TVcolorforbutton</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="ButtonAddExampleland">
+        <item name="android:layout_width">86dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/TVcolorforbutton</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -25,5 +35,16 @@
         <item name="android:layout_height">125dp</item>
         <item name="android:gravity">right|center</item>
     </style>
+
+
+    <style name="TVExampleland">
+        <item name="android:background">@color/TVbackgroundcolor</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/TVcolorforbutton</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">125dp</item>
+        <item name="android:gravity">right|center</item>
+    </style>
+
 
 </resources>

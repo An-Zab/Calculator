@@ -13,6 +13,9 @@
     <color name="accolor1">#C86F2232</color>
     <color name="accolor1.1">#FF6F2232</color>
     <color name="TVbackgroundcolor">#272727</color>
+    <color name="buttoncolorspecial">#1C3334</color>
+    <color name="buttoncolorfunction">#A3806543</color>
+    <color name="buttoncolorfunction1.1">#A370593B</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

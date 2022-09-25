@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var workingTV: TextView
     private var resultTV: String = ""
     var a = 1
+    var bracketscounterclosed = 0
+    var bracketscounteropened = 0
     private lateinit var numberButtons : Array<Button>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             if (strNumber.length == 0) {
                 workingTV.text = strNumber
             } else  {
-                if (strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*') {
+                if (strNumber.length>2 && strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*') {
                     strNumber.deleteCharAt(strNumber.length-2)
                     strNumber.deleteCharAt(strNumber.length-1)
                     strNumber.append('+')
@@ -120,23 +122,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         idbrackets.setOnClickListener {
-            try {if (a % 2 != 0) {
-                strNumber.append(idbrackets.text[0])
-                workingTV.text = strNumber
-                a++
-            } else {
-                if (a % 2 == 0 && strNumber.last() != '(') {
-                    strNumber.append(idbrackets.text[3])
+            try {
+                if (bracketscounteropened <= bracketscounterclosed || bracketscounteropened == 0
+                    || strNumber.last() == '('){
+                    strNumber.append(idbrackets.text[0])
                     workingTV.text = strNumber
-                    a++
-                } else {
-                    workingTV.text = strNumber
+                    bracketscounteropened++
                 }
-            }
+                else {
+                    if (bracketscounteropened > bracketscounterclosed && strNumber.last() != '(') {
+                        strNumber.append(idbrackets.text[3])
+                        workingTV.text = strNumber
+                        bracketscounterclosed++
+                    } else {
+                        workingTV.text = strNumber
+                    }
+                }
             } catch (e: Exception){
                 strNumber.append(idbrackets.text[0])
                 workingTV.text = strNumber
-                a++
+                bracketscounteropened++
             }
         }
 
@@ -144,28 +149,40 @@ class MainActivity : AppCompatActivity() {
             strNumber.delete(0,strNumber.length)
             resultTV = ""
             workingTV.text = strNumber
-            a = 1
+            bracketscounterclosed = 0
+            bracketscounteropened = 0
         }
+
         iddelete.setOnClickListener{
             try {
-                if (strNumber.last() == ')' || strNumber.last() == '(') {
+                if (strNumber.last() == '(') {
                     strNumber.setLength(strNumber.length - 1)
                     workingTV.text = strNumber
-                    a--
+                    bracketscounteropened--
                 } else {
-                    strNumber.setLength(strNumber.length - 1)
-                    workingTV.text = strNumber
+                    if(strNumber.last() == ')') {
+                        strNumber.setLength(strNumber.length - 1)
+                        workingTV.text = strNumber
+                        bracketscounterclosed--
+                    } else {
+                        strNumber.setLength(strNumber.length - 1)
+                        workingTV.text = strNumber
                     }
                 }
+            }
             catch (e: Exception){
                 workingTV.text = ""}
         }
+
         idequal.setOnClickListener {
             if (strNumber.length == 0){
                 workingTV.text = ""
             }
-            if (a % 2 == 0 && strNumber.length != 1) {
-                strNumber.append(')')
+            if (bracketscounteropened != bracketscounterclosed) {
+                while (bracketscounteropened > bracketscounterclosed){
+                    strNumber.append(")")
+                    bracketscounterclosed++
+                }
             }
             if (strNumber.lastOrNull() == '*' || strNumber.lastOrNull() == '/'
                 || strNumber.lastOrNull() == '.') {
@@ -195,8 +212,11 @@ class MainActivity : AppCompatActivity() {
 
         }
         idpercents.setOnClickListener {
-            if (a % 2 == 0 && strNumber.length != 1) {
-                strNumber.append(')')
+            if (bracketscounteropened != bracketscounterclosed) {
+                while (bracketscounteropened > bracketscounterclosed){
+                    strNumber.append(")")
+                    bracketscounterclosed++
+                }
             }
             if (strNumber.length>=1) {
                 val e = Expression(strNumber.toString())
@@ -243,13 +263,58 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        if (idtoggleButton != null) {
+            idtoggleButton.setOnCheckedChangeListener{buttonView, isChecked ->
+                if (isChecked) {
+                    mXparser.setDegreesMode()
+                    Log.d("MyLog", "Seichas gradusy")
+                } else {
+                    mXparser.setRadiansMode()
+                    Log.d("MyLog", "Seichas radiany")
+                }
+            }
+        }
 
-        idsin.setOnClickListener {
-            mXparser.setDegreesMode()
-            var e = Expression("sin(90)")
-            Log.d("MyLog", "sin90 v gradusah raven: " + e.calculate())
-            mXparser.setRadiansMode()
-            e = Expression("sin(90)")
+
+        if (idsin != null) {
+            idsin.setOnClickListener {
+                if (strNumber.last() == '.') {
+                    strNumber.delete(strNumber.length-1, strNumber.length)
+                }
+                strNumber.append("sin(")
+                workingTV.text = strNumber
+                bracketscounteropened++
+            }
+        }
+        if (idcos != null) {
+            idsin.setOnClickListener {
+                if (strNumber.last() == '.') {
+                    strNumber.delete(strNumber.length-1, strNumber.length)
+                }
+                strNumber.append("sin(")
+                workingTV.text = strNumber
+                bracketscounteropened++
+            }
+        }
+        if (idtg != null) {
+            idsin.setOnClickListener {
+                if (strNumber.last() == '.') {
+                    strNumber.delete(strNumber.length-1, strNumber.length)
+                }
+                strNumber.append("sin(")
+                workingTV.text = strNumber
+                bracketscounteropened++
+            }
+        }
+        if (idctg != null) {
+            idsin.setOnClickListener {
+                if (strNumber.last() == '.') {
+                    strNumber.delete(strNumber.length-1, strNumber.length)
+                }
+                strNumber.append("sin(")
+                workingTV.text = strNumber
+                bracketscounteropened++
+            }
         }
 
 
@@ -273,6 +338,8 @@ class MainActivity : AppCompatActivity() {
 
         builder.show()
     }
+
+
 
     fun numberButtonclick(btn : Button) {
         strNumber.append(btn.text)

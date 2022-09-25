@@ -4,15 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/acbutton.xml" value="0.1785" />
+        <entry key="..\:/git/Calculator/app/src/main/res/drawable/acbuttonland.xml" value="0.181" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/buttonexample.xml" value="0.1785" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/buttonexampleland.xml" value="0.181" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/buttonformat.xml" value="0.1785" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/buttonfunexample.xml" value="0.181" />
+        <entry key="..\:/git/Calculator/app/src/main/res/drawable/buttonfunexampleland.xml" value="0.181" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/equalbutton.xml" value="0.1785" />
+        <entry key="..\:/git/Calculator/app/src/main/res/drawable/equalbuttonland.xml" value="0.181" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/launcher.xml" value="0.174" />
+        <entry key="..\:/git/Calculator/app/src/main/res/drawable/specialbuttonlexampleland.xml" value="0.181" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/splashscreen.xml" value="0.1785" />
         <entry key="..\:/git/Calculator/app/src/main/res/drawable/toggleselector.xml" value="0.181" />
-        <entry key="..\:/git/Calculator/app/src/main/res/layout-land/activity_main.xml" value="0.22" />
+        <entry key="..\:/git/Calculator/app/src/main/res/layout-land/activity_main.xml" value="0.2479692176143651" />
         <entry key="..\:/git/Calculator/app/src/main/res/layout/activity_main.xml" value="0.12" />
         <entry key="..\:/git/Calculator/app/src/main/res/layout/activity_splash_screen.xml" value="0.18020833333333333" />
         <entry key="..\:/git/Calculator/app/src/main/res/layout/alertdialog.xml" value="0.22" />

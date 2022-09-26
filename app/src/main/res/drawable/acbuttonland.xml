@@ -34,8 +34,8 @@
 
             <gradient android:type="radial"
                 android:gradientRadius="600"
-                android:startColor="@color/accolor1"
-                android:endColor="@color/accolor1.1">
+                android:startColor="@color/buttoncolor1pressed"
+                android:endColor="@color/buttoncolor1.1pressed">
             </gradient>
         </shape>
     </item>

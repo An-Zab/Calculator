@@ -16,9 +16,11 @@ class MainActivity : AppCompatActivity() {
     private var strNumber = StringBuilder()
     private lateinit var workingTV: TextView
     private var resultTV: String = ""
-    var a = 1
+    var a = 0
     var bracketscounterclosed = 0
     var bracketscounteropened = 0
+    var X : String = ""
+    var Y : String = ""
     private lateinit var numberButtons : Array<Button>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -175,6 +177,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         idequal.setOnClickListener {
+            Y = strNumber.toString()
             if (strNumber.length == 0){
                 workingTV.text = ""
             }
@@ -188,13 +191,24 @@ class MainActivity : AppCompatActivity() {
                 || strNumber.lastOrNull() == '.') {
                 strNumber.delete(strNumber.length-1, strNumber.length)
             }
+            if (X!= "" && Y!= "") {
+                val e = Expression("$X^$Y")
+                resultTV = e.calculate().toString()
+                strNumber.delete(0, strNumber.length)
+                workingTV.text = resultTV
+                strNumber.append(resultTV)
+                bracketscounteropened = 0
+                bracketscounterclosed = 0
+            }
             if(strNumber.length >= 1) {
                 val e = Expression(strNumber.toString())
                 resultTV = e.calculate().toString()
                 strNumber.delete(0, strNumber.length)
                 workingTV.text = resultTV
                 strNumber.append(resultTV)
-                a=1 }
+                bracketscounteropened = 0
+                bracketscounterclosed = 0
+            }
             else { if(workingTV.text == "Error in expression") {
                 resultTV = ""
                 workingTV.text = ""
@@ -203,13 +217,17 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append(workingTV.text)
                 workingTV.text = resultTV
                 resultTV = ""
-                a=1 }
+                bracketscounteropened = 0
+                bracketscounterclosed = 0
+            }
             }
             if (workingTV.text == "NaN") {
                 workingTV.text = "Error in expression"
                 strNumber.delete(0, strNumber.length)
             }
-
+            messageTV.text = ""
+            Y = ""
+            X = ""
         }
         idpercents.setOnClickListener {
             if (bracketscounteropened != bracketscounterclosed) {
@@ -278,7 +296,10 @@ class MainActivity : AppCompatActivity() {
 
         if (idsin != null) {
             idsin.setOnClickListener {
-                if (strNumber.last() == '.') {
+                var teststring = Expression("2pi")
+                var ppp = teststring.calculate()
+                Log.d("MyLog", "2 pi ravno: $ppp")
+                if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
                 strNumber.append("sin(")
@@ -287,8 +308,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (idcos != null) {
-            idsin.setOnClickListener {
-                if (strNumber.last() == '.') {
+            idcos.setOnClickListener {
+                if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
                 strNumber.append("sin(")
@@ -297,8 +318,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (idtg != null) {
-            idsin.setOnClickListener {
-                if (strNumber.last() == '.') {
+            idtg.setOnClickListener {
+                if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
                 strNumber.append("sin(")
@@ -306,9 +327,10 @@ class MainActivity : AppCompatActivity() {
                 bracketscounteropened++
             }
         }
+
         if (idctg != null) {
-            idsin.setOnClickListener {
-                if (strNumber.last() == '.') {
+            idctg.setOnClickListener {
+                if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
                 strNumber.append("sin(")
@@ -317,11 +339,44 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        if (idXvstepeni2 != null) {
+            idXvstepeni2.setOnClickListener {
+                if (strNumber.length == 0) {
+                    workingTV.text = strNumber
+                } else {
+                    if (strNumber.lastOrNull() == '.' || strNumber.lastOrNull() == '+'
+                        || strNumber.lastOrNull() == '-' || strNumber.lastOrNull() == '*'
+                        || strNumber.lastOrNull() == '/') {
+                        strNumber.delete(strNumber.length-1, strNumber.length)
+                        strNumber.append("^2")
+                        workingTV.text = strNumber
+                    } else {
+                        strNumber.append("^2")
+                        workingTV.text = strNumber
+                    }
+                }
+            }
+        }
 
+        if(idXvstepeniY != null) {
+            idXvstepeniY.setOnClickListener {
+                Y = ""
+                if(strNumber.length>0) {
+                    if(messageTV != null){
+                        if (messageTV.text == "") {
+                            messageTV.text = "Enter Y"
+                            X = strNumber.toString()
+                            strNumber.delete(0, strNumber.length)
+                            workingTV.text = strNumber
+                        }
+                    }
+                } else {
+                    workingTV.text = strNumber
+                }
+            }
+        }
 
-
-
-
+       
 
 
 

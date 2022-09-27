@@ -9,14 +9,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.mariuszgromada.math.mxparser.*
 import java.lang.Exception
 import androidx.appcompat.app.AlertDialog
+import kotlinx.android.synthetic.main.screen_splash.*
 
 
+private const val KEY1 = "KEY1"
 
 class MainActivity : AppCompatActivity() {
     private var strNumber = StringBuilder()
+    var strNumberdeep = String
     private lateinit var workingTV: TextView
     private var resultTV: String = ""
-    var a = 0
     var bracketscounterclosed = 0
     var bracketscounteropened = 0
     var X : String = ""
@@ -26,11 +28,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         CreateSimpleDialog()
-
         workingTV = findViewById(R.id.workingTV)
-
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) { i.setOnClickListener { numberButtonclick(i) } }
+
 
 
         idplus.setOnClickListener {
@@ -153,6 +154,8 @@ class MainActivity : AppCompatActivity() {
             workingTV.text = strNumber
             bracketscounterclosed = 0
             bracketscounteropened = 0
+            if(messageTV != null) {messageTV.text = ""}
+
         }
 
         iddelete.setOnClickListener{
@@ -177,7 +180,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         idequal.setOnClickListener {
+
             Y = strNumber.toString()
+            Log.d("MyLog", "X: $X Y: $Y")
             if (strNumber.length == 0){
                 workingTV.text = ""
             }
@@ -191,15 +196,7 @@ class MainActivity : AppCompatActivity() {
                 || strNumber.lastOrNull() == '.') {
                 strNumber.delete(strNumber.length-1, strNumber.length)
             }
-            if (X!= "" && Y!= "") {
-                val e = Expression("$X^$Y")
-                resultTV = e.calculate().toString()
-                strNumber.delete(0, strNumber.length)
-                workingTV.text = resultTV
-                strNumber.append(resultTV)
-                bracketscounteropened = 0
-                bracketscounterclosed = 0
-            }
+
             if(strNumber.length >= 1) {
                 val e = Expression(strNumber.toString())
                 resultTV = e.calculate().toString()
@@ -225,7 +222,16 @@ class MainActivity : AppCompatActivity() {
                 workingTV.text = "Error in expression"
                 strNumber.delete(0, strNumber.length)
             }
-            messageTV.text = ""
+            if (X!= "" && Y!= "") {
+                val e = Expression("$X^$Y")
+                resultTV = e.calculate().toString()
+                strNumber.delete(0, strNumber.length)
+                workingTV.text = resultTV
+                strNumber.append(resultTV)
+                bracketscounteropened = 0
+                bracketscounterclosed = 0
+            }
+            if (messageTV != null) {messageTV.text = ""}
             Y = ""
             X = ""
         }
@@ -257,6 +263,7 @@ class MainActivity : AppCompatActivity() {
             if (strNumber.length == 0) {
                 workingTV.text = strNumber
             } else {
+
             while (strNumber[index2] != '*' && strNumber[index2] != '/' && strNumber[index2] != '('
                 && strNumber[index2] != '(' && strNumber[index2] != '+' && strNumber[index2] != '-' && index2!=0)
             {
@@ -296,9 +303,6 @@ class MainActivity : AppCompatActivity() {
 
         if (idsin != null) {
             idsin.setOnClickListener {
-                var teststring = Expression("2pi")
-                var ppp = teststring.calculate()
-                Log.d("MyLog", "2 pi ravno: $ppp")
                 if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
@@ -358,29 +362,103 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        if(idXvstepeniY != null) {
+        if (idXvstepeniY != null && messageTV != null) {
             idXvstepeniY.setOnClickListener {
                 Y = ""
-                if(strNumber.length>0) {
-                    if(messageTV != null){
-                        if (messageTV.text == "") {
-                            messageTV.text = "Enter Y"
-                            X = strNumber.toString()
-                            strNumber.delete(0, strNumber.length)
-                            workingTV.text = strNumber
+                if (messageTV != null) {
+
+                    if(workingTV.text.length>0) {
+                        if(messageTV != null){
+                            if (messageTV.text == "") {
+                                messageTV.text = "Enter Y"
+                                X = strNumber.toString()
+                                strNumber.delete(0, strNumber.length)
+                                workingTV.text = strNumber
+                            }
                         }
+                    } else {
+                        messageTV.text = "Enter X"
+                        workingTV.text = strNumber
                     }
-                } else {
-                    workingTV.text = strNumber
+                    if (messageTV.text == "Enter X" && strNumber.length>0){
+                        messageTV.text = "Enter Y"
+                        X = strNumber.toString()
+                        strNumber.delete(0, strNumber.length)
+                        workingTV.text = strNumber
+                    }
                 }
             }
         }
 
-       
+        if (idpi != null) {
+            idpi.setOnClickListener {
+                if (strNumber.lastOrNull() == '.') {
+                    strNumber.delete(strNumber.length - 1, strNumber.length)
+                }
+                strNumber.append("π")
+                workingTV.text = strNumber
+            }
+        }
 
+        if (ide != null) {
+            ide.setOnClickListener {
+                if (strNumber.lastOrNull() == '.') {
+                    strNumber.delete(strNumber.length - 1, strNumber.length)
+                }
+                strNumber.append("e")
+                workingTV.text = strNumber
+            }
+        }
+
+        if (idextent != null) {
+            idextent.setOnClickListener {
+                if (strNumber.length == 0) {
+                    workingTV.text = strNumber
+                } else {
+                    if (strNumber.lastOrNull() == '.' || strNumber.lastOrNull() == '(') {
+                        workingTV.text = strNumber
+                    } else {
+                    strNumber.append("^")
+                    workingTV.text = strNumber}
+                }
+            }
+        }
+
+        if (idsqrt != null) {
+            idsqrt.setOnClickListener {
+                if (strNumber.lastOrNull()=='.'){
+                strNumber.delete(strNumber.length - 1, strNumber.length)
+            }
+                strNumber.append("√")
+                workingTV.text = strNumber
+            }
+        }
+
+        if (idlg != null) {
+            idlg.setOnClickListener {
+                if (strNumber.lastOrNull()=='.'){
+                    strNumber.delete(strNumber.length - 1, strNumber.length)
+                }
+                strNumber.append("lg(")
+                workingTV.text = strNumber
+                bracketscounteropened++
+            }
+        }
+
+        if (idfactorial != null) {
+            idfactorial.setOnClickListener {
+                if (strNumber.lastOrNull()=='.'){
+                    strNumber.delete(strNumber.length - 1, strNumber.length)
+                }
+                strNumber.append("!")
+                workingTV.text = strNumber
+            }
+        }
 
 
     }
+
+
 
     fun CreateSimpleDialog() {
         val builder = AlertDialog.Builder(this)
@@ -394,7 +472,19 @@ class MainActivity : AppCompatActivity() {
         builder.show()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState?.run {
+            putString("keyforworkingTV", workingTV.text.toString())
+            putString("keyforstrNumber", strNumber.toString())
+        }
+        super.onSaveInstanceState(outState)
+    }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        workingTV.text = savedInstanceState.getString("keyforworkingTV")
+        strNumber.append(savedInstanceState.getString("keyforstrNumber").toString())
+    }
 
     fun numberButtonclick(btn : Button) {
         strNumber.append(btn.text)
@@ -409,6 +499,23 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }
 

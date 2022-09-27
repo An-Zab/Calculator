@@ -206,7 +206,7 @@
         android:text="1"
         app:layout_constraintBottom_toTopOf="@+id/id0"
         app:layout_constraintEnd_toStartOf="@+id/id2"
-        app:layout_constraintStart_toEndOf="@+id/idlog"
+        app:layout_constraintStart_toEndOf="@+id/idlg"
         app:layout_constraintTop_toBottomOf="@+id/id4" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -224,7 +224,7 @@
         style="@style/ButtonAddExampleland"
         android:background="@drawable/specialbuttonlexampleland"
         android:text="√"
-        app:layout_constraintBottom_toTopOf="@+id/idlog"
+        app:layout_constraintBottom_toTopOf="@+id/idlg"
         app:layout_constraintEnd_toStartOf="@+id/id4"
         app:layout_constraintStart_toEndOf="@+id/idXvstepeni2"
         app:layout_constraintTop_toBottomOf="@+id/idextent" />
@@ -247,7 +247,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/id0"
         app:layout_constraintStart_toEndOf="@+id/ide"
-        app:layout_constraintTop_toBottomOf="@+id/idlog" />
+        app:layout_constraintTop_toBottomOf="@+id/idlg" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/idXvstepeniY"
@@ -276,15 +276,15 @@
         android:text="π"
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/ide"
-        app:layout_constraintEnd_toStartOf="@+id/idlog"
+        app:layout_constraintEnd_toStartOf="@+id/idlg"
         app:layout_constraintStart_toEndOf="@+id/idtg"
         app:layout_constraintTop_toBottomOf="@+id/idXvstepeni2" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/idlog"
+        android:id="@+id/idlg"
         style="@style/ButtonAddExampleland"
         android:background="@drawable/specialbuttonlexampleland"
-        android:text="log"
+        android:text="lg"
         android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/idfactorial"
         app:layout_constraintEnd_toStartOf="@+id/id1"

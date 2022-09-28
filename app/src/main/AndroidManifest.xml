@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.calculator"
-    android:versionName="0.9.0"
+    android:versionName="0.9.9"
     android:versionCode="1">
 
 
@@ -21,6 +21,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

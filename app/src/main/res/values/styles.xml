@@ -29,7 +29,7 @@
 
     <style name="TVExample">
         <item name="android:background">@color/TVbackgroundcolor</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">50sp</item>
         <item name="android:textColor">@color/TVcolorforbutton</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">125dp</item>
@@ -45,6 +45,6 @@
         <item name="android:layout_height">125dp</item>
         <item name="android:gravity">right|center</item>
     </style>
-
+    
 
 </resources>

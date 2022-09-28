@@ -3,20 +3,19 @@ package com.example.calculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.screen_splash.*
 import org.mariuszgromada.math.mxparser.*
 import java.lang.Exception
-import androidx.appcompat.app.AlertDialog
-import kotlinx.android.synthetic.main.screen_splash.*
 
 
-private const val KEY1 = "KEY1"
+
 
 class MainActivity : AppCompatActivity() {
     private var strNumber = StringBuilder()
-    var strNumberdeep = String
     private lateinit var workingTV: TextView
     private var resultTV: String = ""
     var bracketscounterclosed = 0
@@ -27,32 +26,38 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        CreateSimpleDialog()
-        workingTV = findViewById(R.id.workingTV)
-        numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
-        for (i in numberButtons) { i.setOnClickListener { numberButtonclick(i) } }
 
+        workingTV = findViewById(R.id.workingTV)
+        workingTV.movementMethod
+        numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
+        for (i in numberButtons) {
+            i.setOnClickListener { numberButtonclick(i) }
+        }
 
 
         idplus.setOnClickListener {
-            if (strNumber.length == 0) {
+            if (strNumber.length == 0 || strNumber.last() == '(') {
                 workingTV.text = strNumber
             } else  {
-                if (strNumber.length>2 && strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*') {
-                    strNumber.deleteCharAt(strNumber.length-2)
+                if(strNumber.last() == '.' || strNumber.last() == '*' ||
+                    strNumber.last() == '/' || strNumber.last() == '+'){
                     strNumber.deleteCharAt(strNumber.length-1)
                     strNumber.append('+')
                     workingTV.text = strNumber
-                }   else    {
-                    if(strNumber.last() == '+' || strNumber.last() == '-'
-                        || strNumber.last() == '*' || strNumber.last() == '/'
-                    ) {
-                        strNumber.delete(strNumber.length-1, strNumber.length)
-                        strNumber.append('+')
+                } else {
+                    try {
+                        if(strNumber.length>=3 && strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*') {
+                            strNumber.setLength(strNumber.length-2)
+                            strNumber.append('+')
+                            workingTV.text = strNumber
+                        } else {
+                            strNumber.append("+")
+                            workingTV.text = strNumber
+                        }
+                    } catch (e: Exception){
+                        strNumber.append("+")
                         workingTV.text = strNumber
-                    } else {
-                    strNumber.append("+")
-                    workingTV.text = strNumber}
+                    }
                 }
             }
         }
@@ -62,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append("-")
                 workingTV.text = strNumber
             } else  {
-                if (strNumber.last() == '+' || strNumber.last() == '-') {
+                if (strNumber.lastOrNull() == '+' || strNumber.lastOrNull() == '-') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                     strNumber.append('-')
                     workingTV.text = strNumber
@@ -223,7 +228,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.delete(0, strNumber.length)
             }
             if (X!= "" && Y!= "") {
-                val e = Expression("$X^$Y")
+                val e = Expression("($X)^($Y)")
                 resultTV = e.calculate().toString()
                 strNumber.delete(0, strNumber.length)
                 workingTV.text = resultTV
@@ -279,11 +284,15 @@ class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 }
             }
-            if (strNumber[strNumber.length-2] == '+' || strNumber[strNumber.length-2] == '-'
+            try {
+                if (strNumber[strNumber.length-2] == '+' || strNumber[strNumber.length-2] == '-'
                 || strNumber[strNumber.length-2] == '*' || strNumber[strNumber.length-2] == '/'
                 || strNumber[strNumber.length-2] == ')' || strNumber[strNumber.length-2] == '('
             ){
                 strNumber.delete(strNumber.length-1, strNumber.length)
+                workingTV.text = strNumber
+                }
+            } catch (e: Exception) {
                 workingTV.text = strNumber
             }
         }
@@ -326,7 +335,7 @@ class MainActivity : AppCompatActivity() {
                 if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
-                strNumber.append("sin(")
+                strNumber.append("tg(")
                 workingTV.text = strNumber
                 bracketscounteropened++
             }
@@ -337,7 +346,7 @@ class MainActivity : AppCompatActivity() {
                 if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
-                strNumber.append("sin(")
+                strNumber.append("ctg(")
                 workingTV.text = strNumber
                 bracketscounteropened++
             }
@@ -460,17 +469,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    fun CreateSimpleDialog() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Вітаю дарагі карыстальнік! \nHello dear user!")
-        builder.setMessage(" Перад табой бэта-версія праграмы калькулятар. Спадзяюся што ў цябе застануцца выключна прыемныя ўраджанні." +
-        "\n This is the beta version of the calculator program. I hope that you will have good experiences with it.")
-        builder.setIcon(R.drawable.imagetitle)
-        builder.setPositiveButton("Continue", { dialog, which ->
-        })
-
-        builder.show()
-    }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState?.run {

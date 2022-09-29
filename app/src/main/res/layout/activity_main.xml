@@ -21,14 +21,15 @@
     <HorizontalScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="120dp"
         android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/AC"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearlayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -36,9 +37,8 @@
             <TextView
                 android:id="@+id/workingTV"
                 style="@style/TVExample"
-                android:layout_height="match_parent"
                 android:lines="1"
-                android:text=""
+                android:textSize="92sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

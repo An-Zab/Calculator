@@ -4,8 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
-import android.widget.Button
-import android.widget.TextView
+import android.view.View
+import android.widget.*
+import androidx.recyclerview.widget.LinearSmoothScroller.SNAP_TO_START
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.screen_splash.*
 import org.mariuszgromada.math.mxparser.*
@@ -14,7 +15,7 @@ import java.lang.Exception
 
 
 
-class MainActivity : AppCompatActivity() {
+open class MainActivity : AppCompatActivity() {
     private var strNumber = StringBuilder()
     private lateinit var workingTV: TextView
     private var resultTV: String = ""
@@ -28,11 +29,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         workingTV = findViewById(R.id.workingTV)
-        workingTV.movementMethod
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) {
             i.setOnClickListener { numberButtonclick(i) }
         }
+
+
+
+
 
 
         idplus.setOnClickListener {
@@ -60,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+            scrollright()
         }
 
         idminus.setOnClickListener {
@@ -76,6 +81,7 @@ class MainActivity : AppCompatActivity() {
                     workingTV.text = strNumber
                 }
             }
+            scrollright()
         }
 
         idmultiply.setOnClickListener {
@@ -101,6 +107,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.delete(0, strNumber.length)
                 workingTV.text = ""
             }
+            scrollright()
         }
 
 
@@ -127,6 +134,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.delete(0, strNumber.length)
                 workingTV.text = ""
             }
+            scrollright()
         }
 
         idbrackets.setOnClickListener {
@@ -151,6 +159,7 @@ class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
             }
+            scrollright()
         }
 
         AC.setOnClickListener {
@@ -160,7 +169,7 @@ class MainActivity : AppCompatActivity() {
             bracketscounterclosed = 0
             bracketscounteropened = 0
             if(messageTV != null) {messageTV.text = ""}
-
+            scrollright()
         }
 
         iddelete.setOnClickListener{
@@ -182,7 +191,8 @@ class MainActivity : AppCompatActivity() {
             }
             catch (e: Exception){
                 workingTV.text = ""}
-        }
+            scrollright()
+            }
 
         idequal.setOnClickListener {
 
@@ -239,7 +249,9 @@ class MainActivity : AppCompatActivity() {
             if (messageTV != null) {messageTV.text = ""}
             Y = ""
             X = ""
+            scrollright()
         }
+
         idpercents.setOnClickListener {
             if (bracketscounteropened != bracketscounterclosed) {
                 while (bracketscounteropened > bracketscounterclosed){
@@ -261,7 +273,9 @@ class MainActivity : AppCompatActivity() {
                 workingTV.text = "Error in expression"
                 strNumber.delete(0, strNumber.length)
             }
+            scrollright()
         }
+
         iddot.setOnClickListener {
             var index1 : Int = strNumber.length-1
             var index2 : Int = strNumber.length-1
@@ -295,6 +309,7 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 workingTV.text = strNumber
             }
+            scrollright()
         }
 
         if (idtoggleButton != null) {
@@ -318,6 +333,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append("sin(")
                 workingTV.text = strNumber
                 bracketscounteropened++
+                scrollright()
             }
         }
         if (idcos != null) {
@@ -328,6 +344,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append("sin(")
                 workingTV.text = strNumber
                 bracketscounteropened++
+                scrollright()
             }
         }
         if (idtg != null) {
@@ -338,6 +355,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append("tg(")
                 workingTV.text = strNumber
                 bracketscounteropened++
+                scrollright()
             }
         }
 
@@ -349,6 +367,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append("ctg(")
                 workingTV.text = strNumber
                 bracketscounteropened++
+                scrollright()
             }
         }
 
@@ -368,6 +387,7 @@ class MainActivity : AppCompatActivity() {
                         workingTV.text = strNumber
                     }
                 }
+                scrollright()
             }
         }
 
@@ -396,6 +416,7 @@ class MainActivity : AppCompatActivity() {
                         workingTV.text = strNumber
                     }
                 }
+                scrollright()
             }
         }
 
@@ -406,6 +427,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 strNumber.append("π")
                 workingTV.text = strNumber
+                scrollright()
             }
         }
 
@@ -416,6 +438,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 strNumber.append("e")
                 workingTV.text = strNumber
+                scrollright()
             }
         }
 
@@ -430,6 +453,7 @@ class MainActivity : AppCompatActivity() {
                     strNumber.append("^")
                     workingTV.text = strNumber}
                 }
+                scrollright()
             }
         }
 
@@ -440,6 +464,7 @@ class MainActivity : AppCompatActivity() {
             }
                 strNumber.append("√")
                 workingTV.text = strNumber
+                scrollright()
             }
         }
 
@@ -451,6 +476,7 @@ class MainActivity : AppCompatActivity() {
                 strNumber.append("lg(")
                 workingTV.text = strNumber
                 bracketscounteropened++
+                scrollright()
             }
         }
 
@@ -461,12 +487,12 @@ class MainActivity : AppCompatActivity() {
                 }
                 strNumber.append("!")
                 workingTV.text = strNumber
+                scrollright()
             }
         }
 
 
     }
-
 
 
 
@@ -485,9 +511,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun numberButtonclick(btn : Button) {
-        strNumber.append(btn.text)
-        workingTV.text = strNumber
+        val handler = android.os.Handler()
+            strNumber.append(btn.text)
+            workingTV.text = strNumber
+            scrollright()
     }
+
+    fun scrollright(){
+        android.os.Handler().postDelayed({
+        val s = findViewById<View>(R.id.scrollView) as HorizontalScrollView
+        s.fullScroll(HorizontalScrollView.FOCUS_RIGHT) }, 200)
+    }
+
 
     override fun onStart() {
         super.onStart()

@@ -6,9 +6,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.widget.*
-import androidx.recyclerview.widget.LinearSmoothScroller.SNAP_TO_START
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.screen_splash.*
 import org.mariuszgromada.math.mxparser.*
 import java.lang.Exception
 
@@ -27,11 +25,17 @@ open class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         workingTV = findViewById(R.id.workingTV)
+        Log.d("MyLog", "WorkingTV = ${workingTV.text}")
+
+        changetextsizeback()
+        scrollleft()
+        mXparser.setRadiansMode()
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) {
-            i.setOnClickListener { numberButtonclick(i) }
+            i.setOnClickListener { numberButtonclick(i)
+                changetextsize()
+            }
         }
 
 
@@ -50,7 +54,8 @@ open class MainActivity : AppCompatActivity() {
                     workingTV.text = strNumber
                 } else {
                     try {
-                        if(strNumber.length>=3 && strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*') {
+                        if(strNumber.length>=3 && strNumber[strNumber.length-2] == '/' || strNumber[strNumber.length-2] == '*'
+                            && strNumber[strNumber.length-1] == '-' ) {
                             strNumber.setLength(strNumber.length-2)
                             strNumber.append('+')
                             workingTV.text = strNumber
@@ -64,6 +69,12 @@ open class MainActivity : AppCompatActivity() {
                     }
                 }
             }
+                if(strNumber.length >= 2 &&strNumber[strNumber.length-1] == '+'  && strNumber[strNumber.length-2] == '-'){
+                    strNumber.setLength(strNumber.length-2)
+                    strNumber.append('+')
+                    workingTV.text = strNumber
+                }
+            changetextsize()
             scrollright()
         }
 
@@ -82,6 +93,7 @@ open class MainActivity : AppCompatActivity() {
                 }
             }
             scrollright()
+            changetextsize()
         }
 
         idmultiply.setOnClickListener {
@@ -108,6 +120,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = ""
             }
             scrollright()
+            changetextsize()
         }
 
 
@@ -135,6 +148,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = ""
             }
             scrollright()
+            changetextsize()
         }
 
         idbrackets.setOnClickListener {
@@ -160,6 +174,7 @@ open class MainActivity : AppCompatActivity() {
                 bracketscounteropened++
             }
             scrollright()
+            changetextsize()
         }
 
         AC.setOnClickListener {
@@ -169,7 +184,9 @@ open class MainActivity : AppCompatActivity() {
             bracketscounterclosed = 0
             bracketscounteropened = 0
             if(messageTV != null) {messageTV.text = ""}
+            extentTV.text = ""
             scrollright()
+            changetextsize()
         }
 
         iddelete.setOnClickListener{
@@ -191,7 +208,9 @@ open class MainActivity : AppCompatActivity() {
             }
             catch (e: Exception){
                 workingTV.text = ""}
+            extentTV.text = ""
             scrollright()
+            changetextsizeback()
             }
 
         idequal.setOnClickListener {
@@ -246,10 +265,32 @@ open class MainActivity : AppCompatActivity() {
                 bracketscounteropened = 0
                 bracketscounterclosed = 0
             }
+            
+            strNumber.forEachIndexed { index, c ->
+                var indexspecial = strNumber.length-1
+                if(c=='E'){
+                    var str = StringBuilder(extentTV.text)
+                    str.delete(0, str.length)
+                    while (index<=indexspecial){
+                        str.append(strNumber[indexspecial])
+                        indexspecial--
+                    }
+                    str.reverse()
+                    str[0] = '^'
+                    if (extentTV.text != ""){
+                        extentTV.text = ""
+                        extentTV.text = str
+                    } else {
+                        extentTV.text = str
+                    }
+                }
+            }
+            
             if (messageTV != null) {messageTV.text = ""}
             Y = ""
             X = ""
-            scrollright()
+            scrollleft()
+            changetextsizeback()
         }
 
         idpercents.setOnClickListener {
@@ -267,13 +308,14 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = "$a"
             } else {
                 strNumber.delete(0, strNumber.length)
-                workingTV.text = "Nothing to count"
+                workingTV.text = "Empty"
             }
             if (workingTV.text == "NaN") {
                 workingTV.text = "Error in expression"
                 strNumber.delete(0, strNumber.length)
             }
             scrollright()
+            changetextsize()
         }
 
         iddot.setOnClickListener {
@@ -310,16 +352,15 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
             }
             scrollright()
+            changetextsize()
         }
 
         if (idtoggleButton != null) {
             idtoggleButton.setOnCheckedChangeListener{buttonView, isChecked ->
                 if (isChecked) {
                     mXparser.setDegreesMode()
-                    Log.d("MyLog", "Seichas gradusy")
                 } else {
                     mXparser.setRadiansMode()
-                    Log.d("MyLog", "Seichas radiany")
                 }
             }
         }
@@ -341,10 +382,11 @@ open class MainActivity : AppCompatActivity() {
                 if (strNumber.lastOrNull() == '.') {
                     strNumber.delete(strNumber.length-1, strNumber.length)
                 }
-                strNumber.append("sin(")
+                strNumber.append("cos(")
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
+                changetextsize()
             }
         }
         if (idtg != null) {
@@ -356,6 +398,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -368,6 +411,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -388,6 +432,7 @@ open class MainActivity : AppCompatActivity() {
                     }
                 }
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -417,6 +462,7 @@ open class MainActivity : AppCompatActivity() {
                     }
                 }
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -428,6 +474,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("π")
                 workingTV.text = strNumber
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -439,6 +486,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("e")
                 workingTV.text = strNumber
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -454,6 +502,7 @@ open class MainActivity : AppCompatActivity() {
                     workingTV.text = strNumber}
                 }
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -465,6 +514,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("√")
                 workingTV.text = strNumber
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -477,6 +527,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -488,6 +539,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("!")
                 workingTV.text = strNumber
                 scrollright()
+                changetextsize()
             }
         }
 
@@ -500,6 +552,8 @@ open class MainActivity : AppCompatActivity() {
         outState?.run {
             putString("keyforworkingTV", workingTV.text.toString())
             putString("keyforstrNumber", strNumber.toString())
+            putInt("keyforopenbrackets", bracketscounteropened)
+            putInt("keyforclosedbrackets", bracketscounterclosed)
         }
         super.onSaveInstanceState(outState)
     }
@@ -508,6 +562,8 @@ open class MainActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         workingTV.text = savedInstanceState.getString("keyforworkingTV")
         strNumber.append(savedInstanceState.getString("keyforstrNumber").toString())
+        bracketscounterclosed = savedInstanceState.getInt("keyforclosedbrackets")
+        bracketscounteropened = savedInstanceState.getInt("keyforopenbrackets")
     }
 
     fun numberButtonclick(btn : Button) {
@@ -521,6 +577,43 @@ open class MainActivity : AppCompatActivity() {
         android.os.Handler().postDelayed({
         val s = findViewById<View>(R.id.scrollView) as HorizontalScrollView
         s.fullScroll(HorizontalScrollView.FOCUS_RIGHT) }, 200)
+    }
+
+    fun scrollleft(){
+        android.os.Handler().postDelayed({
+            val s = findViewById<View>(R.id.scrollView) as HorizontalScrollView
+            s.fullScroll(HorizontalScrollView.FOCUS_LEFT) }, 200)
+    }
+
+    fun changetextsize(){
+        if (strNumber.length > 6 && strNumber.length<13 && idtoggleButton == null){
+            workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 55F)
+            } else {
+            if (strNumber.length >= 13 && idtoggleButton == null){
+                workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40F)
+            }
+            if(strNumber.length>24 && idtoggleButton != null){
+                workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36F)
+                    }
+            }
+        }
+
+    fun changetextsizeback(){
+        if (idtoggleButton == null){
+            if (strNumber.length<6){
+                workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 92F)
+            } else{
+                if (strNumber.length>6 && strNumber.length<=13){
+                    workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 55F)
+                } else {
+                    workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40F)
+                }
+            }
+        } else {
+            if (strNumber.length<24) {
+                workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 50F)
+            }
+        }
     }
 
 

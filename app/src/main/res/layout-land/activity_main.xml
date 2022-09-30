@@ -25,9 +25,9 @@
 
             <TextView
                 android:id="@+id/workingTV"
-                style="@style/TVExampleland"
+                style="@style/TVExample"
                 android:lines="1"
-                android:textSize="60sp"
+                android:textSize="50sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -380,14 +380,27 @@
 
     <TextView
         android:id="@+id/messageTV"
-        style="@style/TVExampleland"
-        android:background="@color/backgroundcolor"
+        style="@style/TVExample"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/backgroundcolor"
         android:text=""
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+
+        android:id="@+id/extentTV"
+        style="@style/TVExample"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="50dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 

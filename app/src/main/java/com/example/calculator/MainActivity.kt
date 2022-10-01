@@ -26,7 +26,7 @@ open class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         workingTV = findViewById(R.id.workingTV)
-        Log.d("MyLog", "WorkingTV = ${workingTV.text}")
+        Log.d("MyLog", "WorkingTV = $Y")
 
         changetextsizeback()
         scrollleft()
@@ -34,7 +34,7 @@ open class MainActivity : AppCompatActivity() {
         numberButtons = arrayOf(id0, id1, id2, id3, id4, id5, id6, id7, id8, id9)
         for (i in numberButtons) {
             i.setOnClickListener { numberButtonclick(i)
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -74,7 +74,7 @@ open class MainActivity : AppCompatActivity() {
                     strNumber.append('+')
                     workingTV.text = strNumber
                 }
-            changetextsize()
+            changetextsizeback()
             scrollright()
         }
 
@@ -93,7 +93,7 @@ open class MainActivity : AppCompatActivity() {
                 }
             }
             scrollright()
-            changetextsize()
+            changetextsizeback()
         }
 
         idmultiply.setOnClickListener {
@@ -120,7 +120,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = ""
             }
             scrollright()
-            changetextsize()
+            changetextsizeback()
         }
 
 
@@ -148,7 +148,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = ""
             }
             scrollright()
-            changetextsize()
+            changetextsizeback()
         }
 
         idbrackets.setOnClickListener {
@@ -174,7 +174,7 @@ open class MainActivity : AppCompatActivity() {
                 bracketscounteropened++
             }
             scrollright()
-            changetextsize()
+            changetextsizeback()
         }
 
         AC.setOnClickListener {
@@ -186,7 +186,7 @@ open class MainActivity : AppCompatActivity() {
             if(messageTV != null) {messageTV.text = ""}
             extentTV.text = ""
             scrollright()
-            changetextsize()
+            changetextsizeback()
         }
 
         iddelete.setOnClickListener{
@@ -240,7 +240,7 @@ open class MainActivity : AppCompatActivity() {
                 bracketscounteropened = 0
                 bracketscounterclosed = 0
             }
-            else { if(workingTV.text == "Error in expression") {
+            else { if(workingTV.text == "Error") {
                 resultTV = ""
                 workingTV.text = ""
                 strNumber.delete(0, strNumber.length)
@@ -253,7 +253,7 @@ open class MainActivity : AppCompatActivity() {
             }
             }
             if (workingTV.text == "NaN") {
-                workingTV.text = "Error in expression"
+                workingTV.text = "Error"
                 strNumber.delete(0, strNumber.length)
             }
             if (X!= "" && Y!= "") {
@@ -264,6 +264,10 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append(resultTV)
                 bracketscounteropened = 0
                 bracketscounterclosed = 0
+                if (workingTV.text == "NaN") {
+                    workingTV.text = "Error"
+                    strNumber.delete(0, strNumber.length)
+                }
             }
             
             strNumber.forEachIndexed { index, c ->
@@ -311,11 +315,11 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = "Empty"
             }
             if (workingTV.text == "NaN") {
-                workingTV.text = "Error in expression"
+                workingTV.text = "Error"
                 strNumber.delete(0, strNumber.length)
             }
-            scrollright()
-            changetextsize()
+            scrollleft()
+            changetextsizeback()
         }
 
         iddot.setOnClickListener {
@@ -352,7 +356,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
             }
             scrollright()
-            changetextsize()
+            changetextsizeback()
         }
 
         if (idtoggleButton != null) {
@@ -386,7 +390,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
         if (idtg != null) {
@@ -398,7 +402,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -411,7 +415,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -432,7 +436,7 @@ open class MainActivity : AppCompatActivity() {
                     }
                 }
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -462,7 +466,7 @@ open class MainActivity : AppCompatActivity() {
                     }
                 }
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -474,7 +478,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("π")
                 workingTV.text = strNumber
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -486,7 +490,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("e")
                 workingTV.text = strNumber
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -502,7 +506,7 @@ open class MainActivity : AppCompatActivity() {
                     workingTV.text = strNumber}
                 }
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -514,7 +518,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("√")
                 workingTV.text = strNumber
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -527,7 +531,7 @@ open class MainActivity : AppCompatActivity() {
                 workingTV.text = strNumber
                 bracketscounteropened++
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -539,7 +543,7 @@ open class MainActivity : AppCompatActivity() {
                 strNumber.append("!")
                 workingTV.text = strNumber
                 scrollright()
-                changetextsize()
+                changetextsizeback()
             }
         }
 
@@ -585,26 +589,14 @@ open class MainActivity : AppCompatActivity() {
             s.fullScroll(HorizontalScrollView.FOCUS_LEFT) }, 200)
     }
 
-    fun changetextsize(){
-        if (strNumber.length > 6 && strNumber.length<13 && idtoggleButton == null){
-            workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 55F)
-            } else {
-            if (strNumber.length >= 13 && idtoggleButton == null){
-                workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40F)
-            }
-            if(strNumber.length>24 && idtoggleButton != null){
-                workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 36F)
-                    }
-            }
-        }
 
     fun changetextsizeback(){
         if (idtoggleButton == null){
-            if (strNumber.length<6){
+            if (strNumber.length<=6){
                 workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 92F)
             } else{
-                if (strNumber.length>6 && strNumber.length<=13){
-                    workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 55F)
+                if (strNumber.length>6 && strNumber.length<=11){
+                    workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 60F)
                 } else {
                     workingTV.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40F)
                 }
